@@ -20,7 +20,7 @@ class OpenAIProvider(LLMInterface):
         self.generation_model_id = None
 
         self.embedding_model_id = None
-        self.embedding_size = None
+        self._embedding_size    = None # embedding dimention.
 
         self.client = OpenAI(
             api_key = self.api_key,
@@ -30,12 +30,16 @@ class OpenAIProvider(LLMInterface):
         self.enums = OpenAIEnums
         self.logger = logging.getLogger(__name__)
 
+    @property
+    def embedding_size(self):
+        return self._embedding_size
+    
     def set_generation_model(self, model_id: str):
         self.generation_model_id = model_id
 
     def set_embedding_model(self, model_id: str, embedding_size: int):
         self.embedding_model_id = model_id
-        self.embedding_size = embedding_size
+        self._embedding_size    = embedding_size
 
     def process_text(self, text: str):
         return text[:self.default_input_max_characters].strip()

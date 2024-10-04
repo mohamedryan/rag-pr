@@ -2,13 +2,14 @@ from stores.llm import LLMInterface
 from .BaseController import BaseController
 from models.db_schemes import Project, DataChunk
 from stores.llm.LLMEnums import DocumentTypeEnum
+from stores.llm.templates.template_parser import TemplateParser
 from typing import List
 import json
 
 class NLPController(BaseController):
 
     def __init__(self, vectordb_client, generation_client: LLMInterface, 
-                 embedding_client: LLMInterface, template_parser):
+                 embedding_client: LLMInterface, template_parser: TemplateParser):
         super().__init__()
 
         self.vectordb_client = vectordb_client

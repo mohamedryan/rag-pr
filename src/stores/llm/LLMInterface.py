@@ -2,11 +2,16 @@ from abc import ABC, abstractmethod
 
 class LLMInterface(ABC):
 
+    class PromptRoles:
+        User      = "user"
+        System    = "system"
+        Assistant = "assistant"
+
     @property
     @abstractmethod
     def embedding_size(self):
         pass
-    
+
     @abstractmethod
     def set_generation_model(self, model_id: str):
         pass

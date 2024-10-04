@@ -23,8 +23,12 @@ class CoHereProvider(LLMInterface):
 
         self.client = cohere.Client(api_key=self.api_key)
 
-        self.enums = CoHereEnums
         self.logger = logging.getLogger(__name__)
+
+    class PromptRoles:
+        User      = CoHereEnums.USER.value
+        System    = CoHereEnums.SYSTEM.value
+        Assistant = CoHereEnums.ASSISTANT.value
 
     @property
     def embedding_size(self):

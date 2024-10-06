@@ -2,6 +2,11 @@ from abc import ABC, abstractmethod
 
 class LLMInterface(ABC):
 
+    class PromptRoles:
+        User      = "user"
+        System    = "system"
+        Assistant = "assistant"
+        
     @abstractmethod
     def set_generation_model(self, model_id: str):
         pass

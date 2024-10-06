@@ -120,8 +120,8 @@ class NLPController(BaseController):
         # step3: Construct Generation Client Prompts
         chat_history = [
             self.generation_client.construct_prompt(
-                prompt=system_prompt,
-                role=self.generation_client.enums.SYSTEM.value,
+                prompt = system_prompt,
+                role   = self.generation_client.PromptRoles.System,
             )
         ]
 

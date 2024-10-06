@@ -27,8 +27,12 @@ class OpenAIProvider(LLMInterface):
             base_url = self.api_url if self.api_url and len(self.api_url) else None
         )
 
-        self.enums = OpenAIEnums
         self.logger = logging.getLogger(__name__)
+
+    class PromptRoles:
+        User      = OpenAIEnums.USER.value
+        System    = OpenAIEnums.SYSTEM.value
+        Assistant = OpenAIEnums.ASSISTANT.value
 
     def set_generation_model(self, model_id: str):
         self.generation_model_id = model_id

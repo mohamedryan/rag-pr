@@ -1,3 +1,4 @@
+from stores.llm.templates.template_parser import TemplateParser
 from .BaseController import BaseController
 from models.db_schemes import Project, DataChunk
 from stores.llm.LLMEnums import DocumentTypeEnum
@@ -7,7 +8,7 @@ import json
 class NLPController(BaseController):
 
     def __init__(self, vectordb_client, generation_client, 
-                 embedding_client, template_parser):
+                 embedding_client, template_parser: TemplateParser):
         super().__init__()
 
         self.vectordb_client = vectordb_client
